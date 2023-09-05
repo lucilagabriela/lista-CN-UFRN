@@ -1,0 +1,1 @@
+#Seu programa deve ler um número inteiro N, em seguida imprimir todos os seus divisores naturais.
