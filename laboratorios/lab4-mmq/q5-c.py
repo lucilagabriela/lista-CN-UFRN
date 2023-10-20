@@ -15,18 +15,17 @@ y = np.array([
     [4.0]
 ])
 
-# H(t) = ln(i(t)/A)
-# A = 0
-# B = -B
+# H(t) = ln(i(t)/t)
+# a = ln(A)
+# b = -B
 # H(t)
 
 Ht = np.log(y/x)
 
-X = np.concatenate((np.ones_like(x), y), 1)
-print(X)
+X = np.concatenate((np.ones_like(x), x), 1)
 
 c = np.copy(Ht)
-
+'''
 XTX = np.transpose(X)@X # transposta de X multiplicada por x
 
 XTc = np.transpose(X)@c # transposta de X multiplicado por c
@@ -45,4 +44,4 @@ xg = np.linspace(0, 10, 100)
 yg = ac[0,0]+ ac[1,0]*xg
 plt.plot(xg, yg)
 plt.plot(x, y, "o")
-plt.show()
+plt.show()'''
