@@ -24,10 +24,12 @@ XTc = np.transpose(X)@c # transposta de X multiplicado por c
 a = np.linalg.solve(XTX, XTc) # a 'chapeu'
 # ou ac1 = np.linalg.inv(XTX)@XTc
 
+A = (np.exp(a[0]),-a[1])
+
 # enquanto que o erro quadrático deve estar na variável EQ:
 VE = c - X@a # vetor de erros
 EQ = np.sum(VE**2)
 
 ##  NÃO ALTERE O CÓDIGO ABAIXO, ele é usado para verificação.
-soma = np.sum(a) + EQ
+soma = np.sum(A) + EQ
 print(f'{soma:.4f}')
