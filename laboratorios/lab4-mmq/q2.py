@@ -14,17 +14,22 @@ y = np.array(arrayY).reshape((m,1))
 ## A partir daqui, as matrizes x e y já estão definidas
 ## SEU PROGRAMA A PARTIR DAQUI
 
-X = np.vander(x.flatten(), n+1, increasing=True)
+C1 = np.ones((m,1))
 
-coeficientes = np.linalg.lstsq(X, y, rcond=None)[0] # coeficientes dos mínimos quadrados
+for i in range(1,n+1):
+  C = x**i
+  C1 = np.concatenate((C1,C),axis=1)
 
-a = coeficientes.reshape((n+1, 1))
+X = C1
 
-y_predito = X.dot(coeficientes)
+XTX = np.transpose(X)@X
 
-erro_quadratico = np.sum((y - y_predito) ** 2)
+XTy = np.transpose(X)@y
 
-EQ = erro_quadratico
+a = np.linalg.solve(XTX, XTy)
+
+VE = X@a - y
+EQ = np.sum(VE**2)
 
 ## NÃO ALTERE O CÓDIGO ABAIXO, ele é usado para verificação.
 soma = np.sum(a) + EQ
