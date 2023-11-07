@@ -1,15 +1,22 @@
-def lagrange_interpolation(x, xi, yi):
-    n = len(xi) - 1
-    result = 0.0
-    
-    for i in range(n+1):
-        term = yi[i]
-        for j in range(n+1):
-            if j != i:
-                term = term * (x - xi[j]) / (xi[i] - xi[j])
-        result += term
-    
-    return result
+import numpy as np
 
-# Calcula o valor do polinômio interpolador de Lagrange em x=a
-PdeA = lagrange_interpolation(a, x, y)
+a = float(input())
+n = int(input()) # grau do polinomio
+x = [float(input()) for x in range(n+1)]
+y = [float(input()) for x in range(n+1)]
+
+def lagrange(p, x0, y0, n):
+    PdeA = 0
+    for i in range(0, n+1):
+        L = 1
+        for j in range(0, n+1):
+            if i != j:
+                L *= (p-x0[j])/(x0[i]-x0[j])
+    
+        PdeA += y0[i]*L
+
+    return PdeA
+
+PdeA = lagrange(a, x, y, n)
+
+print(f'{PdeA:.4f}')
