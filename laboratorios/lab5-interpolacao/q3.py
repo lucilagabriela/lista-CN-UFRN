@@ -30,7 +30,7 @@ def interpolaNewton(A,x,coeficientes):
   return y
 
 coeficientes = newton(x,y)
-A = 73
+A = 70
 
 print("Coeficientes: ", coeficientes)
 print(f"P{len(x)-1}(x) =  ",interpolaNewton(A,x,coeficientes))
