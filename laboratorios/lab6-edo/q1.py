@@ -12,11 +12,10 @@ def euler(g, x0, y0, h, n):
     y = [y0]
 
     for i in range(n):
-        yNext = y[-1] + h * g(x[-1], y[-1])
-        xNext = x[-1] + h
-        x.append(xNext)
-        y.append(yNext)
-
+        yi = y[-1] + h * g(x[-1], y[-1])
+        xi = x[-1] + h
+        x.append(xi)
+        y.append(yi)
     return y[-1]
 
 

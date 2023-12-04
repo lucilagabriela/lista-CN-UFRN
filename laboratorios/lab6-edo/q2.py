@@ -12,26 +12,23 @@ def Heun(g, x0, y0, h, n):
     y = [y0]
 
     for i in range(n):
-        xPrev = x[-1]
-        yPrev = y[-1]
+        xAnt = x[-1]
+        yAnt = y[-1]
 
-        k1 = g(xPrev, yPrev)
-        k2 = g(xPrev + h, yPrev + h * k1)
+        k1 = g(xAnt, yAnt)
+        k2 = g(xAnt + h, yAnt + h * k1)
 
-        yNext = yPrev + 0.5 * h * (k1 + k2)
-        xNext = xPrev + h
+        yNext = yAnt + 0.5 * h * (k1 + k2)
+        xNext = xAnt + h
 
         x.append(xNext)
         y.append(yNext)
 
     return x, y
 
-# Chamando a função Heun
 resultado = Heun(g, x0, y0, h, n)
 xValores, yValores = resultado
 
-# Valor de f(x_n) após n iterações
 saida = yValores[-1]
 
-# Saída formatada
 print(f'{saida:.3f}')

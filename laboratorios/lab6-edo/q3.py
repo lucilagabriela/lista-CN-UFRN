@@ -12,12 +12,12 @@ def PontoMedio(g, x0, y0, h, n):
     y = [y0] * (n + 1)
 
     for i in range(n):
-        slopeInicio = g(x[i], y[i])
-        x_mid = x[i] + h / 2.0
-        y_mid = y[i] + (h / 2.0) * slopeInicio
-        slopeNoMeio = g(x_mid, y_mid)
+        k1 = g(x[i], y[i])
+        x0 = x[i] + h / 2.0
+        y0 = y[i] + (h / 2.0) * k1
+        k2 = g(x0, y0)
         x[i + 1] = x[i] + h
-        y[i + 1] = y[i] + h * slopeNoMeio
+        y[i + 1] = y[i] + h * k2
 
     return y[n]
 
